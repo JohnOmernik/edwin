@@ -162,7 +162,7 @@ def readfile(line):
 def display_spark_results(b):
     global results
     fmd5 = b.tooltip
-    j = Javascript(JS)
+    j = Javascript(results[fmd5])
     display(j)
 
 # Main Helper
