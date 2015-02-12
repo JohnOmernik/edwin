@@ -10,3 +10,5 @@
 * Magic functions where you can run a sql statement and when finished a button appears. That button, when click opens a new window with the results in a nice javascript interactice datagrid.  That way the results ARE stored in the iPython notebook, but wide or tall restults don't interupt the flow of the notebook. 
 * Graphing/Visualiation should be a magic as possible. Yes we will want to tweak, but given a set of data, we should be able to "try" to make a certain graph and if it doesn't work, still accept modifications.
 * 
+
+
