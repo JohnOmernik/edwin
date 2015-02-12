@@ -1,24 +1,37 @@
 # How to use Edwin
 Edwin is designed for easy integration with iPython. The goal is to be one system that is both standarized for easy sharing of ideas while still customizaable so that each enviroment has a tailored Edwin. 
 
-* Edwin works great with iPython as the Python Shell for Spark. We hope to flush out more use cases for Edwin with Spark going forward. Including helper functions for graphx, mllib, spark streaming. 
+## GLobal Prerequisites
+All Edwin development will be based on iPython 3+ (currently in Dev as of 2015-02-15). This means there are certain requirements that you must install. We recommend also installing JupyterHub for best future stability. 
 
-* You can run Edwin without Spark.  We should detect this on execution so we do get errors if we try to invoke spark variables and they fail
+- iPython 3 (and all requirements)
+- Python 3.4+ *
+- Jupyterhub (This is sorta optional, but just install it and do it this way from the start... please?)
 
-* Edwin will require certain packages like numpy and matplotlib.  Install those on your server.  We should discuss making them optional, or required, the goal here is a standardized enviroment. 
+* While Python3 is a requirement, the code in Edwin uses an iPython2 Shell, we will probabably develop a system of tools that will customize an Edwipin per the shells you are using. If you want Edwin in a new shell, we recommend looking at the setup we did for Python2 and creating an Edwin for a new shell... please upload if you get-it-done!
 
-* To run edwin make the first line of your notebook (or set the execute on open config option, ensure name space)
-% run /path/to/edwin.py -i 
+## Edwin - Python2 Shell 
+### Requirements
+- matplotlib
+- numpy
+- mpld3
+- pandas
+
+### Optional
+- pymongo
+- pyhs2
+- Spark
+
+### Python2 Installation
+- Install Python2 shell in iPython3 (example... )
+- Git edwin
+- Determine where the files will be located. This should be in a location that all users who will be using edwin have access to
+- For each user
+ - Create the default profile: ipython profile create
+ - run ./install_edwin.sh /path/to/edwin/python2 default
+ - This run command will have be run for each user who will use edwin. This create links in the startup folder of the ipython default profile for the user and allows you to keep one running instance of edwin going. 
 
 
-## Example of running Edwin with iPython Notebooks and a Spark Shell on Mesos
-IPYTHON_OPTS="notebook --matplotlib inline --ip=%LISTENIP% --no-browser --port=%LISTENPORT%" %PATHTOSPARKHOME%/bin/pyspark --master mesos://%MESOSMASTER%:5050 --driver-memory 1G --executor-memory 4096M
 
-%LISTENIP% = The IP address you want to run the webserver for iPython Notebooks
-%LISTENPORT% = The Port you are listening on for iPython Notebooks
-%PATHTOSPARKHOME% = The Spark home, for example /opt/mapr/spark/spark-1.2.0-bin-mapr4 
-%MESOSMASTER% = The Master for your Mesos Cluster
-
-Obviously you can updated the Driver Memory and the Executor memory as needed. 
 
 
