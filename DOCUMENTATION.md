@@ -1,7 +1,7 @@
 # How to use Edwin
 Edwin is designed for easy integration with iPython. The goal is to be one system that is both standarized for easy sharing of ideas while still customizaable so that each enviroment has a tailored Edwin. 
 
-## GLobal Prerequisites
+## Global Prerequisites
 All Edwin development will be based on iPython 3+ (currently in Dev as of 2015-02-15). This means there are certain requirements that you must install. We recommend also installing JupyterHub for best future stability. 
 
 - iPython 3 (and all requirements)
