@@ -7,25 +7,25 @@ def edwin(line):
     print "%edwin - This is me, please read in a proper Acquired Queens English accent"
     print ""
     print "Some helpful tips from your favorite butler"
-    print "\t%edwin_data - This is also me, reading, in an English Accent, which data sources you have defined," + greeting
+    print "  %edwin_data - This is also me, reading, in an English Accent, which data sources you have defined," + greeting
     edwin_custom("") #List out custom Edwins
     print ""
     print "Some helpful Magics:"
-    print "\t%readfile - Take a path and display the results"
-    print "\t%%newNotebook - Takes a path and creates a new notebook returning a link. "
+    print "  %readfile - Take a path and display the results"
+    print "  %%newNotebook - Takes a path and creates a new notebook returning a link. "
     custom("") # List custom Magics
     print ""
     # We need a way to iterate through these files and display them (and functions, and custom variables and custom functions)
     print "Python Functions:"
-    print "runSparkDef(sql) : Run the specified SQL using the Spark Hive Context and return a standard Spark Schema RDD"
-    print "runSpark(sql) : Run the specified SQL using the Spark hive Context and return a JSON like array of the data useful for Pandas"
-    print "runHive(sql) : Run the specified SQL using HiveServer2 and return a JSON like array of the data useful for Pandas etc"
-    print "retSparkJson(collected) : Return the collected Spark Schema RDD as JSON. This takes in the result of runSpark"
-    print "md5(data) : Return the hexdigest md5"
+    print "  runSpark(sql) : Run the specified SQL using the Spark Hive Context return a schema RDD"
+    print "  runHive(sql) : Run the specified SQL using HiveServer2 and return a JSON representation"
+    print "  retSparkJson(collected) : Return the collected Spark Schema RDD as JSON as outputed by runSpark"
+    print "  md5(data) : Return the hexdigest md5"
     print ""
     print "Results of data magics"
-    print "\tprev_file  : Stores the contents of the previous file read with %readfile"
-    print "\tprev_spark : Stores the raw (as returned from spark)results of the previous spark Magic command"
+    print "  prev_file  : Stores the contents of the previous file read with %readfile"
+    print "  prev_spark : Stores the raw (as returned from spark) results of the previous spark magic command"
+    print "  prev_hive : Stores the raw (as returned from hive) results of the previous hive magic command"
 
 
 # Data Helper List out all instantiated items

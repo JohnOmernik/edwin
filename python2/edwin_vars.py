@@ -13,7 +13,6 @@ greeting = "Sir" # Could be, Maam, could be hey you, we should write a function 
 results = {}
 
 # For the magics, it's one thing to just display, but after you run a magic query, it would be nice if you were like "Oh damn, I want those results" well you can with the prev_spark, and other "prev" variables.  We should create one for each magic. 
-prev_spark = ""
 prev_file = ""
 # Define out your custom data sources here
 # The actual definition section is  moved to the  "custom" area for each org.  WE should also add a dictionary item that indicates if the Data Src instantiation was successful

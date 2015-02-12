@@ -1,6 +1,10 @@
 # Custom Data Source Definition
 
 
+# For the magics, it's one thing to just display, but after you run a magic query, it would be nice if you were like "Oh damn, I want those results" well you can with the prev_spark, and other "prev" variables.  We should create one for each magic. 
+prev_spark = ""
+prev_hive = ""
+
 datasrc = {}
 datasrc['name'] = "Spark Context"
 datasrc['desc'] = "Default Connection to local Spark Context"
@@ -30,8 +34,8 @@ datasrcs.append(datasrc)
 datasrc = {}
 datasrc['name'] = "Hive"
 datasrc['desc'] = "Connection to Hive Server2 on Alphaking"
-datasrc['var'] = 'hive'
-datasrc['code'] = "hive = pyhs2.connect(host='alphaking',port=10000,authMechanism='PLAIN',user='darkness',password='removed',database='default')"
+datasrc['var'] = 'hs2'
+datasrc['code'] = "hs2 = pyhs2.connect(host='alphaking',port=10000,authMechanism='PLAIN',user='darkness',password='removed',database='default')"
 datasrc['instantiated'] = False
 
 datasrcs.append(datasrc)

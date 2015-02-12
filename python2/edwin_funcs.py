@@ -4,25 +4,31 @@
 def md5(data):
     return hashlib.md5(data.encode('utf8')).hexdigest()
 
-def runSpark(sql):
-    return sparkhc.sql(sql).collect()
 
-def retSparkJson(collected):
-    return [r.asDict() for r in collected]
-
-def runHive(sql):
-  curs = hive.cursor()
-  curs.execute(sql)
-  try:
-      schema = [unicode(x['columnName'].split('.')[1]) for x in curs.getSchema()]
-  except:
-      schema = [unicode(x['columnName']) for x in curs.getSchema()]
-  myout = [dict(zip(schema, x)) for x in curs.fetch()]
-  return myout
-
-
-def display_spark_results(b):
+def results_new_window_click(b):
     global results
-    fmd5 = b.tooltip
-    j = Javascript(results[fmd5])
+    d = b.tooltip.split(':')
+    fmd5 = d[0]
+    bReplaceCRLF = d[1]
+    pd.set_option('max_colwidth', 100000)
+    pd.set_option('display.max_rows', None)
+    
+
+    df = pd.DataFrame(results[fmd5])
+    gridhtml = df.to_html()
+    
+    if int(bReplaceCRLF) == 1:
+        outhtml = replaceHTMLCRLF(gridhtml)
+    else:
+        outhtml = gridhtml
+
+    window_options = "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1024, height=800, top=0, left=0"
+    base = """var win = window.open("", "&~&", "*~*");
+    win.document.body.innerHTML = `%~%`;
+    """
+    JS = base.replace('%~%', outhtml)
+    JS = JS.replace('&~&', fmd5)
+    JS = JS.replace('*~*', window_options)
+
+    j = Javascript(JS)
     display(j)

@@ -3,7 +3,7 @@
 
 @register_line_magic
 def edwin_custom(line):
-    print "\t%edwin_hiveql - Some handy Hive QL tips"
+    print "  %edwin_hiveql - Some handy Hive QL tips"
 
 # Some HiveQL Edwin Tips
 @register_line_magic
@@ -15,9 +15,15 @@ def edwin_hiveql(line):
 
 @register_line_magic
 def custom(line):
-    print "\t%%spark - Run the query and display automagically in a grid in a new window. Useful for large result sets"
-    print "\t%%spark_inline - Run the query and display the results in a Dataframe inline. useful for small result sets."
-    print "\t%newchat - filename : Type this and it will create a new iPython notebook based on the name of the chat file in the same directory."
+    print "  %%spark - Run the query and display automagically in a grid in a new window. Useful for large result sets"
+    print "    %%spark Options: (put on same line as %%spark):" 
+    print "    inline - Display results in notebook rather than button to newwindow"
+    print "    replacecrlf - replace <CR><LF> with <BR> in output for easier visualiztion"
+    print "  %%hive - Run the query and display automagically in a grid in a new window. Useful for large result sets"
+    print "    %%hive Options: (put on same line as %%spark):" 
+    print "    inline - Display results in notebook rather than button to newwindow"
+    print "    replacecrlf - replace <CR><LF> with <BR> in output for easier visualiztion"
+    print "  %newchat - filename : Type this and it will create a new iPython notebook based on source chat file"
 
 # take in a filename, and create a new iPython notebook for that chat.  This is for Chat Translation
 @register_line_magic
@@ -26,7 +32,6 @@ def newchat(line):
     rf = "readfile(\"" + os.path.basename(filename) + "\")"
     commands = rf
     newNotebook(filename, commands)
-
 
 
 # Run spark query, and create a button to display results in another window. We should have edwin keep track of settings for uses on new windows etc. 
@@ -40,45 +45,74 @@ def spark(line, cell):
     out = runSpark(cell)
     prev_spark = out
 
-    df = pd.DataFrame(retSparkJson(out))
-    gridhtml = df.to_html()
+    jsonresults = retSparkJson(out)
+    fmd5 = md5(str(jsonresults))
+    results[fmd5] = jsonresults
+
     if line.find("replacecrlf") >= 0:
-        gridhtml = gridhtml.replace("<CR><LF>", "<BR>")
-        gridhtml = gridhtml.replace("<CR>", "<BR>")
-        gridhtml = gridhtml.replace("<LF>", "<BR>")
-        gridhtml = gridhtml.replace("&lt;CR&gt;&lt;LF&gt;", "<BR>")
-        gridhtml = gridhtml.replace("&lt;CR&gt;", "<BR>")
-        gridhtml = gridhtml.replace("&lt;LF&gt;", "<BR>")
+        bReplaceCRLF = 1
+    else:
+        bReplaceCRLF = 0
 
-    window_options = "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=780, height=200, top=0, left=0"
-    fmd5 = md5(gridhtml)
-    base = """var win = window.open("", "&~&", "*~*");
-    win.document.body.innerHTML = `%~%`;
-    """
-    JS = base.replace('%~%', gridhtml)
-    JS = JS.replace('&~&', fmd5)
-    JS = JS.replace('*~*', window_options)
-    results[fmd5] = JS
-
-
-    button = widgets.Button(description="Results")
-    button.tooltip = fmd5
-    button.on_click(display_spark_results)
-
-    display(button)
+    if line.find("inline") >= 0:
+        bInLine = 1
+    else:
+        bInLine = 0
+    if bInLine == 1:
+        df = pd.DataFrame(jsonresults)
+        gridhtml = df.to_html()
+        if bReplaceCRLF == 1:
+            outhtml = replaceHTMLCRLF(gridhtml)
+        else:
+            outhtml = gridhtml
+        display(HTML(outhtml))
+    else:
+        button = widgets.Button(description="Results")
+        button.tooltip = fmd5 + ":" + str(bReplaceCRLF)
+        button.on_click(results_new_window_click)
+        display(button)
 
 
 
-# Run a spark query. and display in line (old method) 
-@register_cell_magic
-def spark_inline(line, cell):
-    global prev_spark
+
+# Run spark query, and create a button to display results in another window. We should have edwin keep track of settings for uses on new windows etc. 
+@register_line_cell_magic
+def hive(line, cell):
+
+    global prev_hive
+    global results
     pd.set_option('max_colwidth', 100000)
     pd.set_option('display.max_rows', None)
-    out = runSpark(cell)
-    prev_spark = out
-    #print type(out)
-    df = pd.DataFrame(retSparkJson(out))
-    display(df)
+    out = runHive(cell)
+    prev_hive = out
+
+    jsonresults = out
+    fmd5 = md5(str(jsonresults))
+    results[fmd5] = jsonresults
+
+    if line.find("replacecrlf") >= 0:
+        bReplaceCRLF = 1
+    else:
+        bReplaceCRLF = 0
+
+    if line.find("inline") >= 0:
+        bInLine = 1
+    else:
+        bInLine = 0
+    if bInLine == 1:
+        df = pd.DataFrame(jsonresults)
+        gridhtml = df.to_html()
+        if bReplaceCRLF == 1:
+            outhtml = replaceHTMLCRLF(gridhtml)
+        else:
+            outhtml = gridhtml
+        display(HTML(outhtml))
+    else:
+        button = widgets.Button(description="Results")
+        button.tooltip = fmd5 + ":" + str(bReplaceCRLF)
+        button.on_click(results_new_window_click)
+        display(button)
+
+
 
 
