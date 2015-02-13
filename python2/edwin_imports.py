@@ -11,7 +11,7 @@ from IPython.html import widgets # Widget definitions
 import hashlib
 import os
 import sys
-
+import re
 # Third Party Import IPython Imports - Need to install
 import matplotlib.pyplot as plt
 import numpy as np
