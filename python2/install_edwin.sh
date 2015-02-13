@@ -19,6 +19,7 @@ echo "The Profile Directory is $PROFILE_DIR"
 if [ -d "$PROFILE_DIR" ]; then
     PROFILE_STARTUP="$PROFILE_DIR/startup"
     if [ -d $PROFILE_STARTUP ]; then
+        rm $PROFILE_STARTUP/*-edwin*
         echo "ln -s $EDWIN_DIR/edwin_imports.py $PROFILE_STARTUP/00-edwin_imports.py"
         ln -s $EDWIN_DIR/edwin_imports.py $PROFILE_STARTUP/00-edwin_imports.py
         echo "ln -s $EDWIN_DIR/edwin_imports_custom.py $PROFILE_STARTUP/01-edwin_imports_custom.py"
@@ -35,8 +36,12 @@ if [ -d "$PROFILE_DIR" ]; then
         ln -s $EDWIN_DIR/edwin_magics.py $PROFILE_STARTUP/06-edwin_magics.py
         echo "ln -s $EDWIN_DIR/edwin_magics_custom.py $PROFILE_STARTUP/07-edwin_magics_custom.py"
         ln -s $EDWIN_DIR/edwin_magics_custom.py $PROFILE_STARTUP/07-edwin_magics_custom.py
-        echo "ln -s $EDWIN_DIR/edwin.py $PROFILE_STARTUP/08-edwin.py"
-        ln -s $EDWIN_DIR/edwin.py $PROFILE_STARTUP/08-edwin.py
+        echo "ln -s $EDWIN_DIR/edwin_vis.py $PROFILE_STARTUP/08-edwin_vis.py"
+        ln -s $EDWIN_DIR/edwin_vis.py $PROFILE_STARTUP/08-edwin_vis.py
+        echo "ln -s $EDWIN_DIR/edwin_vis_custom.py $PROFILE_STARTUP/09-edwin_vis_custom.py"
+        ln -s $EDWIN_DIR/edwin_vis_custom.py $PROFILE_STARTUP/09-edwin_vis_custom.py
+        echo "ln -s $EDWIN_DIR/edwin.py $PROFILE_STARTUP/10-edwin.py"
+        ln -s $EDWIN_DIR/edwin.py $PROFILE_STARTUP/10-edwin.py
     else
         echo "Sorry, while the profile seems to exist, the startup dir does not, please check into that"
     fi

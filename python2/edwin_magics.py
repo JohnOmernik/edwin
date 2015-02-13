@@ -8,6 +8,7 @@ def edwin(line):
     print ""
     print "Some helpful tips from your favorite butler"
     print "  %edwin_data - This is also me, reading, in an English Accent, which data sources you have defined," + greeting
+    print "  %edwin_vis  - Information regarding visualizations available to you"
     edwin_custom("") #List out custom Edwins
     print ""
     print "Some helpful Magics:"
@@ -34,6 +35,15 @@ def edwin_data(line):
     print "Data stores/Variables Defined defined by you:"
     for x in datasrcs:
         print "%s: Variable: %s - %s --- Instantiated: %s" % (x['name'], x['var'], x['desc'], x['instantiated'])
+
+
+@register_line_magic
+def edwin_vis(line):
+    print greeting + ", some information regarding visualizations available to you:"
+    print "  %vis_line - Information about line graphs"
+    print "  %vis_bar -  Information about bar graphs"
+
+
 
 
 
