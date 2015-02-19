@@ -4,7 +4,7 @@ from IPython.core.magic import (register_line_magic, register_cell_magic, regist
 from IPython.nbformat import v4 as nbf
 from IPython.nbformat import write as nbfwrite
 from IPython.core.display import HTML
-from IPython.display import display_html, display, Javascript, FileLink, FileLinks
+from IPython.display import display_html, display, Javascript, FileLink, FileLinks, Image
 from IPython.html import widgets # Widget definitions
 
 # Python Imports
