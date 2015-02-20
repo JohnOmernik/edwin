@@ -27,10 +27,10 @@ def vis_line(line):
     print "  You can include the JSON data variable in future calls and I can help craft things easier."
     print ""
     print "In the future, consider '%vis_line $JSONDATA $X_COL"
-
-    myIPython = get_ipython()
-    cmd = 'pd.DataFrame(%s).plot(x="%s", figsize=(12, 5))' % (datavar, xcol)
-    myIPython.set_next_input(cmd)
+    if line != '':
+        myIPython = get_ipython()
+        cmd = 'pd.DataFrame(%s).plot(x="%s", figsize=(12, 5))' % (datavar, xcol)
+        myIPython.set_next_input(cmd)
 
 @register_line_magic
 def vis_bar(line):
@@ -51,9 +51,11 @@ def vis_bar(line):
     print ""
     print "In the future, consider '%vis_line $JSONDATA $X_COL"
 
-    myIPython = get_ipython()
-    cmd = 'pd.DataFrame(%s).plot(x="%s", kind="bar", figsize=(12, 5))' % (datavar, xcol)
-    myIPython.set_next_input(cmd)
+
+    if line != '':
+        myIPython = get_ipython()
+        cmd = 'pd.DataFrame(%s).plot(x="%s", kind="bar", figsize=(12, 5))' % (datavar, xcol)
+        myIPython.set_next_input(cmd)
 
 
 
