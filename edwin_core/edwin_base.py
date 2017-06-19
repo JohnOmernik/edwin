@@ -1,8 +1,8 @@
 #!/user/bin/python
 
 #Core IPython Imports
-#from IPython.core.magic import (register_line_magic, register_cell_magic, register_line_cell_magic)
-from IPython.core.magic import (Magics, magics_class, line_magic, cell_magic, line_cell_magic)
+from IPython.core.magic import (register_line_magic, register_cell_magic, register_line_cell_magic)
+#from IPython.core.magic import (Magics, magics_class, line_magic, cell_magic, line_cell_magic)
 
 from nbformat import v4 as nbf
 from nbformat import write as nbfwrite
@@ -47,7 +47,6 @@ for e in env_configs:
             raise Exception("%s is required to be passed in env variables, but not found" %  e.upper())
 #####################################################################################################################
 
-@magics_class
 class Edwin(object):
     matrix_version = ""
 
@@ -82,7 +81,7 @@ class Edwin(object):
             print("Could not open %s" % matrix)
             retval = 1
         return retval
-    @line_magic
+    @register_line_magic
     def edwin(self, line):
         self.ask(line)
 
