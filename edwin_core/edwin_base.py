@@ -54,7 +54,7 @@ class Edwin(Magics):
     matrix_data = {}
     edwinmagics = {}
     datasrcs = {}
-    functions = {}
+#    functions = {}
 
  #    datasrc record
  #    {"name": "gisprodrill", "desc":"Gis Prod Apache Drill", "var": "gisproddrill", "magic": "drill", "instantiated": False, prevresults: []}
