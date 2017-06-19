@@ -92,7 +92,7 @@ class Edwin(object):
     def _load_edwin_core_matrix(self):
         print ("Working Dir: %s" % os.getcwd())
         try:
-            b = open("edwin_core/edwin.json", "r")
+            b = open("edwin.json", "r")
             d = b.read()
             b.close()
             self.matrix_data = json.loads(d)
