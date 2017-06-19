@@ -85,13 +85,12 @@ class Edwin(object):
     @line_magic
     def edwin(self, line):
         self.ask(line)
-
+        return line
 
     def _merge_matrix(self, newmatrix):
         print("I need to merge me some matrix")
 
     def _load_edwin_core_matrix(self):
-        print ("Edwin Location: " + edwin_location)
         try:
             b = open(edwin_location + "/edwin.json", "r")
             d = b.read()
