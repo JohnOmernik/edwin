@@ -81,8 +81,8 @@ class Edwin(object):
             retval = 1
         return retval
     @register_line_magic
-    def edwin(self, line):
-        self.ask(line)
+    def edwin(line):
+        print(line)
 
 
     def _merge_matrix(self, newmatrix):
