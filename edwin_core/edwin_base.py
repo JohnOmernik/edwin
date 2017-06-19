@@ -73,7 +73,6 @@ class Edwin(object):
 #                print("Unable to load %s" % s)
 
 
-
     def _load_edwin_matrix(self, matrix):
         retval = 0
         try:
@@ -87,7 +86,9 @@ class Edwin(object):
         return retval
     @line_magic
     def edwin(self, line):
-        self.ask(line)
+
+        print(line)
+#        self.ask(line)
         return line
 
     def _merge_matrix(self, newmatrix):
