@@ -88,6 +88,13 @@ class Edwin(Magics):
 
         return line
 
+
+    
+
+    @line_magic
+    def matrix(self, line):
+        print(json.dumps(self.matrix_data,sort_keys=True, indent=4, separators=(',', ': ')))
+
     def _merge_matrix(self, newmatrix):
         print("I need to merge me some matrix")
 
