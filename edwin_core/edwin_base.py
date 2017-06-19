@@ -46,6 +46,7 @@ for e in env_configs:
     except:
         if env_configs[e] == True:
             raise Exception("%s is required to be passed in env variables, but not found" %  e.upper())
+
 #####################################################################################################################
 @magics_class
 class Edwin(Magics):
@@ -83,9 +84,7 @@ class Edwin(Magics):
 
     @line_magic
     def lmagic(self, line):
-        "my line magic"
-        print("Full access to the main IPython object:", self.shell)
-        print("Variables in the user namespace:", list(self.shell.user_ns.keys()))
+        print(line)
         return line
 #        print(line)
 #        self.ask(line)
