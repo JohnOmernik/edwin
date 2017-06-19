@@ -75,7 +75,7 @@ class Edwin(Magics):
     def _load_edwin_code(self, loc):
         if os.path.isfile(self.env_locations[loc]['file_path']):
             print("%s exists!" % self.env_locations[loc]['file_path'])
-            self.env_locations['loc']['loaded'] = True
+            self.env_locations[loc]['loaded'] = True
         else:
             print("Can't find: %s" % self.env_locations[loc]['file_path'])
 
