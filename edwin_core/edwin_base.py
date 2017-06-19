@@ -54,13 +54,12 @@ class Edwin(Magics):
 
         env_configs = { "edwin_org_data": False, "edwin_org_code": False, "edwin_user_data": False, "edwin_user_code": False }
         for e in env_configs:
-        try:
-            l = os.environ[e.upper()]
-            self.env_locations[e] = l
-        except:
-            if env_configs[e] == True:
-                raise Exception("%s is required to be passed in env variables, but not found" %  e.upper())
-
+            try:
+                l = os.environ[e.upper()]
+                self.env_locations[e] = l
+            except:
+                if env_configs[e] == True:
+                    raise Exception("%s is required to be passed in env variables, but not found" %  e.upper())
 
         print("Hello, I am Edwin, how may I be of service?")
 
@@ -77,6 +76,7 @@ class Edwin(Magics):
             d = b.read()
             b.close()
             cur_matrix = json.loads(d)
+
         except:
             print("Could not open %s" % matrix)
             retval = 1
@@ -88,9 +88,6 @@ class Edwin(Magics):
 
         return line
 
-
-    
-
     @line_magic
     def matrix(self, line):
         print(self.pprintJSON(self.matrix_data))
@@ -100,7 +97,7 @@ class Edwin(Magics):
         print("I need to merge me some matrix")
 
     def pprintJSON(self, indata):
-        return json.dumps(indata,sort_keys=True, indent=4, separators=(',', ': '))
+        return json.dumps(indata, sort_keys=True, indent=4, separators=(',', ': '))
 
     def _load_edwin_core_matrix(self):
         try:
