@@ -20,17 +20,17 @@ import random
 # Third Party Import IPython Imports - Need to install
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import mpld3
+#import matplotlib.pyplot as plt
+#import mpld3
 
 # Plots to be inline
-try:
-    get_ipython().enable_matplotlib('inline')
-except:
-    print("##################")
-    print("matplotlib inline failed, probably not in a notebook are you?")
-    print("Don't worry, we'll go on")
-    print("##################\n")
+#try:
+#    get_ipython().enable_matplotlib('inline')
+#except:
+#    print("##################")
+#    print("matplotlib inline failed, probably not in a notebook are you?")
+#    print("Don't worry, we'll go on")
+#    print("##################\n")
 
 edwin_location = os.path.dirname(__file__)
 
@@ -92,6 +92,7 @@ class Edwin(Magics):
     def matrix(self, line):
         print(self.pprintJSON(self.matrix_data))
         print(self.pprintJSON(self.env_locations))
+        return line
 
     def _merge_matrix(self, newmatrix):
         print("I need to merge me some matrix")
