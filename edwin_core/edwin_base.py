@@ -83,7 +83,7 @@ class Edwin(Magics):
         return retval
 
     @line_magic
-    def edwin(self, line):
+    def lmagic(self, line):
         "my line magic"
         print("Full access to the main IPython object:", self.shell)
         print("Variables in the user namespace:", list(self.shell.user_ns.keys()))
