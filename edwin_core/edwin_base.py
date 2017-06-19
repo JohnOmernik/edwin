@@ -76,6 +76,7 @@ class Edwin(Magics):
         if os.path.isfile(self.env_locations[loc]['file_path']):
             print("%s exists!" % self.env_locations[loc]['file_path'])
             self.env_locations[loc]['loaded'] = True
+            exec(open(self.env_locations[loc]['file_path']).read())
         else:
             print("Can't find: %s" % self.env_locations[loc]['file_path'])
 
