@@ -84,9 +84,7 @@ class Edwin(Magics):
 
     @line_magic
     def edwin(self, line):
-        print(line)
-        print("Full access to the main IPython object:", self.shell)
-        print("Variables in the user namespace:", list(self.shell.user_ns.keys()))
+        self.ask(line)
 
         return line
 
