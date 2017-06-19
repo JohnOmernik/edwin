@@ -50,20 +50,20 @@ for e in env_configs:
 #####################################################################################################################
 @magics_class
 class Edwin(Magics):
-    matrix_version = ""
+#    matrix_version = ""
 
-    matrix_data = {}
-    magics = {}
-    datasrcs = {}
-    functions = {}
+#    matrix_data = {}
+#    magics = {}
+#    datasrcs = {}
+#    functions = {}
 
  #    datasrc record
  #    {"name": "gisprodrill", "desc":"Gis Prod Apache Drill", "var": "gisproddrill", "magic": "drill", "instantiated": False, prevresults: []}
 
 
-    def __init__(self, *args, **kwargs):
-        self._load_edwin_core_matrix()
-        print("Hello, I am Edwin, how may I be of service?")
+ #   def __init__(self, *args, **kwargs):
+ #       self._load_edwin_core_matrix()
+ #       print("Hello, I am Edwin, how may I be of service?")
 #        for m in env_locations:
 #            res = self._load_edwin_matrix(m)
 #            if m != 0:
