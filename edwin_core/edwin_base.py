@@ -62,6 +62,9 @@ class Edwin(object):
 
 
     def __init__(self, *args, **kwargs):
+
+        super(Edwin, self).__init__()
+
         self._load_edwin_core_matrix()
         print("Hello, I am Edwin, how may I be of service?")
 #        for m in env_locations:
