@@ -57,7 +57,8 @@ class Edwin(Magics):
         for e in env_configs:
             try:
                 l = os.environ[e.upper()]
-                self.env_locations[e] = l
+                tmp = {"file_path": l, "loaded":False}
+                self.env_locations[e] = tmp
                 if e.find("code") >= 0:
                     self._load_edwin_code(e)
             except:
@@ -71,10 +72,10 @@ class Edwin(Magics):
 #            if m != 0:
 #                print("Unable to load %s" % s)
 
-    def _load_edwin_code(self, cfile):
-
-        if os.path.isfile(cfilee):
-            print("%s exists!" % cfile)
+    def _load_edwin_code(self, loc):
+        if os.path.isfile(self.env_locations[loc]['file_path']):
+            print("%s exists!" % self.env_locations[loc]['file_path'])
+            self.env_locations['loc']['loaded'] = True
         else:
             print("Can't find: %s")
 
