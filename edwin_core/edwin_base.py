@@ -50,11 +50,11 @@ for e in env_configs:
 #####################################################################################################################
 @magics_class
 class Edwin(Magics):
-#    matrix_version = ""
-#    matrix_data = {}
-#    edwinmagics = {}
-#    datasrcs = {}
-#    functions = {}
+    matrix_version = ""
+    matrix_data = {}
+    edwinmagics = {}
+    datasrcs = {}
+    functions = {}
 
  #    datasrc record
  #    {"name": "gisprodrill", "desc":"Gis Prod Apache Drill", "var": "gisproddrill", "magic": "drill", "instantiated": False, prevresults: []}
@@ -62,8 +62,8 @@ class Edwin(Magics):
 
     def __init__(self, *args, **kwargs):
         super(Edwin, self).__init__()
-#        self._load_edwin_core_matrix()
-#        print("Hello, I am Edwin, how may I be of service?")
+        self._load_edwin_core_matrix()
+        print("Hello, I am Edwin, how may I be of service?")
 
        # for m in env_locations:
 #            res = self._load_edwin_matrix(m)
@@ -87,14 +87,7 @@ class Edwin(Magics):
     def edwin(self, line):
         "my line magic"
         print(line)
-        #print("Full access to the main IPython object:", self.shell)
-        #print("Variables in the user namespace:", list(self.shell.user_ns.keys()))
         return line
-#        print(line)
-#        return line
-#        print(line)
-#        self.ask(line)
-#        return line
 
     def _merge_matrix(self, newmatrix):
         print("I need to merge me some matrix")
