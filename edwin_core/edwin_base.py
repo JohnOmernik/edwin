@@ -48,7 +48,7 @@ for e in env_configs:
             raise Exception("%s is required to be passed in env variables, but not found" %  e.upper())
 #####################################################################################################################
 @magics_class
-class Edwin(object):
+class Edwin(Magics):
     matrix_version = ""
 
     matrix_data = {}
