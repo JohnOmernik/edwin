@@ -80,6 +80,7 @@ class Edwin(Magics):
             print("Could not open %s" % matrix)
             retval = 1
         return retval
+
     @line_magic
     def edwin(self, line):
         "my line magic"
