@@ -12,6 +12,7 @@ import ipywidgets  # Widget definitions
 # Python Imports
 import hashlib
 import os
+import os.path
 import sys
 import requests
 import re
@@ -57,6 +58,8 @@ class Edwin(Magics):
             try:
                 l = os.environ[e.upper()]
                 self.env_locations[e] = l
+                if e.find("code") >= 0:
+                    self._load_edwin_code(e)
             except:
                 if env_configs[e] == True:
                     raise Exception("%s is required to be passed in env variables, but not found" %  e.upper())
@@ -67,6 +70,13 @@ class Edwin(Magics):
 #            res = self._load_edwin_matrix(m)
 #            if m != 0:
 #                print("Unable to load %s" % s)
+
+    def _load_edwin_code(self, cfile):
+
+        if os.path.isfile(cfilee):
+            print("%s exists!" % cfile)
+        else:
+            print("Can't find: %s")
 
 
     def _load_edwin_matrix(self, matrix):
