@@ -86,10 +86,13 @@ class Edwin(object):
         return retval
     @line_magic
     def edwin(self, line):
-
-        print(line)
-#        self.ask(line)
+        "my line magic"
+        print("Full access to the main IPython object:", self.shell)
+        print("Variables in the user namespace:", list(self.shell.user_ns.keys()))
         return line
+#        print(line)
+#        self.ask(line)
+#        return line
 
     def _merge_matrix(self, newmatrix):
         print("I need to merge me some matrix")
