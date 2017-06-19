@@ -91,6 +91,7 @@ class Edwin(object):
         print("I need to merge me some matrix")
 
     def _load_edwin_core_matrix(self):
+        print ("Working Dir: %s" % os.getcwd())
         try:
             b = open("edwin_core/edwin.json", "r")
             d = b.read()
