@@ -3,7 +3,6 @@
 #Core IPython Imports
 #from IPython.core.magic import (register_line_magic, register_cell_magic, register_line_cell_magic)
 from IPython.core.magic import (Magics, magics_class, line_magic, cell_magic, line_cell_magic)
-
 from nbformat import v4 as nbf
 from nbformat import write as nbfwrite
 from IPython.core.display import HTML
@@ -36,17 +35,6 @@ except:
 edwin_location = os.path.dirname(__file__)
 
 
-env_configs = { "edwin_org_data": False, "edwin_org_code": False, "edwin_user_data": False, "edwin_user_code": False }
-env_locations = {}
-
-for e in env_configs:
-    try:
-        l = os.environ[e.upper()]
-        env_locations[e] = l
-    except:
-        if env_configs[e] == True:
-            raise Exception("%s is required to be passed in env variables, but not found" %  e.upper())
-
 #####################################################################################################################
 @magics_class
 class Edwin(Magics):
@@ -55,6 +43,7 @@ class Edwin(Magics):
     edwinmagics = {}
     datasrcs = {}
     functions = {}
+    env_locations = {}
  #    datasrc record
  #    {"name": "gisprodrill", "desc":"Gis Prod Apache Drill", "var": "gisproddrill", "magic": "drill", "instantiated": False, prevresults: []}
 
@@ -62,6 +51,17 @@ class Edwin(Magics):
     def __init__(self, shell, *args, **kwargs):
         super(Edwin, self).__init__(shell)
         self._load_edwin_core_matrix()
+
+        env_configs = { "edwin_org_data": False, "edwin_org_code": False, "edwin_user_data": False, "edwin_user_code": False }
+        for e in env_configs:
+        try:
+            l = os.environ[e.upper()]
+            self.env_locations[e] = l
+        except:
+            if env_configs[e] == True:
+                raise Exception("%s is required to be passed in env variables, but not found" %  e.upper())
+
+
         print("Hello, I am Edwin, how may I be of service?")
 
        # for m in env_locations:
@@ -93,10 +93,14 @@ class Edwin(Magics):
 
     @line_magic
     def matrix(self, line):
-        print(json.dumps(self.matrix_data,sort_keys=True, indent=4, separators=(',', ': ')))
+        print(self.pprintJSON(self.matrix_data))
+        print(self.pprintJSON(self.env_locations))
 
     def _merge_matrix(self, newmatrix):
         print("I need to merge me some matrix")
+
+    def pprintJSON(self, indata):
+        return json.dumps(indata,sort_keys=True, indent=4, separators=(',', ': '))
 
     def _load_edwin_core_matrix(self):
         try:
