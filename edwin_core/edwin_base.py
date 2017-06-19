@@ -59,7 +59,7 @@ class Edwin(Magics):
  #    {"name": "gisprodrill", "desc":"Gis Prod Apache Drill", "var": "gisproddrill", "magic": "drill", "instantiated": False, prevresults: []}
 
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, shell, *args, **kwargs):
         super(Edwin, self).__init__(shell)
         self._load_edwin_core_matrix()
         print("Hello, I am Edwin, how may I be of service?")
