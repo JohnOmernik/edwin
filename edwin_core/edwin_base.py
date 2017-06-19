@@ -11,7 +11,7 @@ from IPython.display import display_html, display, Javascript, FileLink, FileLin
 import ipywidgets  # Widget definitions
 
 
-edwin_location = __file__
+edwin_location = os.path.dirname(__file__)
 
 # Python Imports
 import hashlib
