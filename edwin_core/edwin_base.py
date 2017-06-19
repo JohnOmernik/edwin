@@ -52,8 +52,8 @@ for e in env_configs:
 class Edwin(Magics):
     matrix_version = ""
     matrix_data = {}
-    edwinmagics = {}
-    datasrcs = {}
+#    edwinmagics = {}
+#    datasrcs = {}
 #    functions = {}
 
  #    datasrc record
