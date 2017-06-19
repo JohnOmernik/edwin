@@ -10,9 +10,6 @@ from IPython.core.display import HTML
 from IPython.display import display_html, display, Javascript, FileLink, FileLinks, Image
 import ipywidgets  # Widget definitions
 
-
-edwin_location = os.path.dirname(__file__)
-
 # Python Imports
 import hashlib
 import os
@@ -36,6 +33,7 @@ except:
     print("Don't worry, we'll go on")
     print("##################\n")
 
+edwin_location = os.path.dirname(__file__)
 
 
 env_configs = { "edwin_org_data": False, "edwin_org_code": False, "edwin_user_data": False, "edwin_user_code": False }
