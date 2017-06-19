@@ -81,7 +81,7 @@ class Edwin(object):
             retval = 1
         return retval
     @register_line_magic
-    def edwin(line):
+    def edwin(line, self):
         print(line)
 
 
