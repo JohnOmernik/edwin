@@ -50,8 +50,8 @@ for e in env_configs:
 #####################################################################################################################
 @magics_class
 class Edwin(Magics):
-    matrix_version = ""
-    matrix_data = {}
+#    matrix_version = ""
+#    matrix_data = {}
 #    edwinmagics = {}
 #    datasrcs = {}
 #    functions = {}
@@ -61,7 +61,7 @@ class Edwin(Magics):
 
 
     def __init__(self, *args, **kwargs):
-        self._load_edwin_core_matrix()
+#        self._load_edwin_core_matrix()
         print("Hello, I am Edwin, how may I be of service?")
 
        # for m in env_locations:
