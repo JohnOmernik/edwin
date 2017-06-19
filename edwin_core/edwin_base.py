@@ -10,6 +10,9 @@ from IPython.core.display import HTML
 from IPython.display import display_html, display, Javascript, FileLink, FileLinks, Image
 import ipywidgets  # Widget definitions
 
+
+edwin_location = __file__
+
 # Python Imports
 import hashlib
 import os
@@ -90,9 +93,9 @@ class Edwin(object):
         print("I need to merge me some matrix")
 
     def _load_edwin_core_matrix(self):
-        print ("Working Dir: %s" % os.getcwd())
+        print ("Edwin Location: " + edwin_location)
         try:
-            b = open("edwin.json", "r")
+            b = open(edwin_location + "/edwin.json", "r")
             d = b.read()
             b.close()
             self.matrix_data = json.loads(d)
