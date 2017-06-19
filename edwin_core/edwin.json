@@ -1,0 +1,16 @@
+{
+    "version": "0.0.1",
+
+    "responses": {
+        "NOTFOUND": [
+            "I looked for %s and just could not find it",
+            "%s appears to be missing"
+        ],
+        "UNKNOWN": [
+            "I can't make out what you are asking me",
+            "So sorry, but I just don't understand"
+        ]
+    }
+}
+
+
