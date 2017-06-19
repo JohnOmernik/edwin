@@ -77,7 +77,7 @@ class Edwin(Magics):
             print("%s exists!" % self.env_locations[loc]['file_path'])
             self.env_locations['loc']['loaded'] = True
         else:
-            print("Can't find: %s")
+            print("Can't find: %s" % self.env_locations[loc]['file_path']))
 
 
     def _load_edwin_matrix(self, matrix):
