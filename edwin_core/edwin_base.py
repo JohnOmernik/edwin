@@ -60,7 +60,8 @@ class Edwin(Magics):
  #    {"name": "gisprodrill", "desc":"Gis Prod Apache Drill", "var": "gisproddrill", "magic": "drill", "instantiated": False, prevresults: []}
 
 
-#    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
+        super(Edwin, self).__init__()
 #        self._load_edwin_core_matrix()
 #        print("Hello, I am Edwin, how may I be of service?")
 
@@ -83,7 +84,7 @@ class Edwin(Magics):
         return retval
 
     @line_magic
-    def lmagic(self, line):
+    def edwin(self, line):
         "my line magic"
         print("Full access to the main IPython object:", self.shell)
         print("Variables in the user namespace:", list(self.shell.user_ns.keys()))
