@@ -40,7 +40,7 @@ class Edwin(Magics):
         # Next load additional matrix components
         for loc in self.env_locations:
             if self.env_locations[loc] != "":
-                load_dir = env_locations[loc]
+                load_dir = self.env_locations[loc]
                 load_matrix = load_dir + "/edwin.json"
 
                 if not os.path.isdir(load_dir):
