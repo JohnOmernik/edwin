@@ -27,10 +27,10 @@ class Edwin(Magics):
     def __init__(self, shell, *args, **kwargs):
         super(Edwin, self).__init__(shell)
         self.myip = get_ipython()
-        for e in env_locations:
+        for e in self.env_locations:
             try:
                 loc = os.environ[e.upper()]
-                env_locations[e] = loc
+                self.env_locations[e] = loc
             except:
                 print("%s not provided as %s in ENV: Not Loading" % (e, e.upper()))
 
@@ -38,8 +38,8 @@ class Edwin(Magics):
         self._load_edwin_matrix(edwin_location + "/edwin.json", "edwin_core")
 
         # Next load additional matrix components
-        for loc in env_locations:
-            if env_locations[loc] != "":
+        for loc in self.env_locations:
+            if self.env_locations[loc] != "":
                 load_dir = env_locations[loc]
                 load_matrix = load_dir + "/edwin.json"
 
