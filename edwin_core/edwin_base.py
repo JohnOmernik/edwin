@@ -252,7 +252,15 @@ class Edwin(Magics):
     def replaceText(self, intext):
         outtext = intext
         for x in self.matrix_replacements:
-            outtext = outtext.replace(x, self.matrix_replacements[x])
+            repl = self.matrix_replacements[x]
+            if repl.find("ENV:") == 0:
+                try:
+                    finalrepl = os.environ[repl.split(":")[1]]
+                except:
+                    finalrepl = repl + ":NOTFOUND"
+            else:
+                finalrepl = repl
+            outtext = outtext.replace(x, finalrepl)
         return outtext
 
 
