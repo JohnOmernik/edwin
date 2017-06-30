@@ -1,15 +1,71 @@
 {
-    "version": "0.0.1",
-
-    "responses": {
-        "NOTFOUND": [
-            "I looked for %s and just could not find it",
-            "%s appears to be missing"
-        ],
-        "UNKNOWN": [
-            "I can't make out what you are asking me",
-            "So sorry, but I just don't understand"
-        ]
+    "matrix_version": "0.0.1",
+    "replacements": {
+        "%nbuser%": "ENV:JPY_USER",
+        "%nbsshhost%": "ENV:JPY_USER_SSH_HOST",
+        "%nbsshport%": "ENV:JPY_USER_SSH_PORT"
+    },
+    "tree_root": {
+        "edwin": {
+            "type": "rand",
+            "root": 1,
+            "list": 0, 
+            "resp": [
+                "Greetings, I am Edwin, please allow me to assist you. I see you didn't ask about anything, so let me offer you thoughts on what you could ask me about:",
+                "Hello, I am Edwin, I can help you with %org_name% information in many ways, please don't hesitate to ask",
+                "Hello %nbuser%, I am your personal data butler, Edwin. I can offer many ways to help, please feel free to ask me anything!"
+            ]
+        },
+        "unknown": {
+            "type": "rand",
+            "list": 0,
+            "resp": [
+                    "I am not sure what you are looking to do, please try %edwin_org for options",
+                    "Are you sure you meant that? Perhaps %edwin will give you more ideas"
+            ]
+        },
+        "vis": {
+            "list": 1,
+            "type": "full",
+            "short_desc": "Visualizations done in notebook",
+            "resp": [
+                "matplotlib is available to do basic visualizations on returned data frames",
+                "",
+                "To use, you must first run in a cell:",
+                "",
+                "%matplotlib inline",
+                "",
+                "Then you can use any dataframe variable and .plot to make it happen",
+                "For example, let's say you ran a query with %%drill, those results would be in the prev_drill variable by default",
+                "To visualize with a (default) line chart you could run:",
+                "",
+                "newvar = prev_drill.plot(x='yourXaxisCol', y='yourYaxisCol', figsize=(15,10))",
+                "",
+                "There is much more you can do with this, please stay tuned for updates or check the MatPlotLib Doc Pages!"
+            ],
+            "children": {
+                "line": {
+                    "type": "full",
+                    "list": 1,
+                    "short_desc": "Line Charts",
+                    "resp": [
+                        "To do a line chart, here's what you do!",
+                        "",
+                        "newvar = prev_drill.plot(kind='line', x='yourXaxisCol', y='yourYaxisCol', figsize=(15,10))"
+                    ]
+                },
+                "bar": {
+                    "type": "full",
+                    "short_desc": "Bar Charts",
+                    "list": 1,
+                    "resp": [
+                        "To do a bar chart, you do this:",
+                        "",
+                        "newvar = prev_drill.plot(kind='bar', x='yourXaxisCol', y='yourYaxisCol', figsize=(15,10))"
+                    ]
+                }
+            }
+        }
     }
 }
 
