@@ -49,7 +49,7 @@ class Edwin(Magics):
                 if not os.path.exists(load_matrix):
                     print("edwin.json file for %s not found at %s - Not Loading!" % (loc, load_matrix))
 
-                print("%s provided - base location: " % (loc, load_dir))
+                print("%s provided - base location: %s" % (loc, load_dir))
                 sys.path.append(load_dir)
                 self._load_edwin_matrix(load_matrix, loc)
 
