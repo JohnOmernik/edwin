@@ -124,13 +124,12 @@ class Edwin(Magics):
 
 
     def _load_edwin_subclass(self, class_name, mod_name):
-
+        class_var = class_name.lower() + "_edwin_class"
         run_code = "from %s import %s\n" % (mod_name, class_name)
         run_code = run_code + "print(\"Attempting to load %s Magics\")\n" % mod_name
-        run_code = run_code + "tclass = None\n"
         run_code = run_code + "ip = get_ipython()\n"
-        run_code = run_code + "tclass = %s(ip)\n" % class_name
-        run_code = run_code + "ip.register_magics(tclass)\n"
+        run_code = run_code + "%s = %s(ip)\n" % (class_var, class_name)
+        run_code = run_code + "ip.register_magics(%s)\n" % class_var
         try:
             self.myip.run_cell(run_code)
         except:
