@@ -36,13 +36,10 @@
                 "%matplotlib inline",
                 "",
                 "Then you can use any dataframe variable and .plot to make it happen",
-                "For example, let's say you ran a query with %%drill, those results would be in the prev_drill variable by default",
-                "To visualize with a (default) line chart you could run:",
-                "",
-                "newvar = prev_drill.plot(x='yourXaxisCol', y='yourYaxisCol', figsize=(15,10))",
                 "",
                 "There is much more you can do with this, please stay tuned for updates or check the MatPlotLib Doc Pages!"
             ],
+            "set_next": "%matplotlib inline",
             "children": {
                 "line": {
                     "type": "full",
@@ -52,7 +49,8 @@
                         "To do a line chart, here's what you do!",
                         "",
                         "newvar = prev_drill.plot(kind='line', x='yourXaxisCol', y='yourYaxisCol', figsize=(15,10))"
-                    ]
+                    ],
+                    "set_next": "newvar = prev_drill.plot(kind='line', x='yourXaxisCol', y='yourYaxisCol', figsize=(15,10))"
                 },
                 "bar": {
                     "type": "full",
@@ -62,7 +60,8 @@
                         "To do a bar chart, you do this:",
                         "",
                         "newvar = prev_drill.plot(kind='bar', x='yourXaxisCol', y='yourYaxisCol', figsize=(15,10))"
-                    ]
+                    ],
+                    "set_next": "newvar = prev_drill.plot(kind='bar', x='yourXaxisCol', y='yourYaxisCol', figsize=(15,10))"
                 }
             }
         }

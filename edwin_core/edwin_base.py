@@ -246,6 +246,8 @@ class Edwin(Magics):
                     pass
                 if self.matrix[x]['list'] == 1:
                     print(" - %s - %s" % (x, desc))
+        if 'set_next' in node:
+            self.myip.set_next_input(node['set_next'])
 
 # Replace text in templates
     def replaceText(self, intext):
