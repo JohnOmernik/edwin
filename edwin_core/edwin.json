@@ -1,15 +1,13 @@
 {
     "matrix_version": "0.0.1",
     "replacements": {
-        "%nbuser%": "ENV:JPY_USER",
-        "%nbsshhost%": "ENV:JPY_USER_SSH_HOST",
-        "%nbsshport%": "ENV:JPY_USER_SSH_PORT"
+        "%nbuser%": "ENV:JPY_USER"
     },
     "tree_root": {
         "edwin": {
             "type": "rand",
             "root": 1,
-            "list": 0, 
+            "list": 0,
             "resp": [
                 "Greetings, I am Edwin, please allow me to assist you. I see you didn't ask about anything, so let me offer you thoughts on what you could ask me about:",
                 "Hello, I am Edwin, I can help you with %org_name% information in many ways, please don't hesitate to ask",
