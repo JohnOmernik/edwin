@@ -149,7 +149,6 @@ class Edwin(Magics):
 # Score the input text
     def retScores(self, intext):
         scores = {}
-        intext_ar = intext.split(" ")
         for x in self.search_matrix:
             tscore = {}
             keywords = x
@@ -159,13 +158,10 @@ class Edwin(Magics):
             all_match = 1
             for w in keywords:
                 if intext.lower().find(w) >= 0:
-                    for i in intext_ar:
-                        if w == i.lower():
-                            cur_score += 1
-                            found_words.append(w)
-                        else:
-                            all_match = 0
-                            break
+                    if w == intext.lower():
+                        cur_score += 1
+                    cur_score += 1
+                    found_words.append(w)
                 else:
                     all_match = 0
                     break
