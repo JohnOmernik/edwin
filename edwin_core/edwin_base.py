@@ -158,6 +158,8 @@ class Edwin(Magics):
             all_match = 1
             for w in keywords:
                 if intext.lower().find(w) >= 0:
+                    if w == intext.lower():
+                        cur_score += 1
                     cur_score += 1
                     found_words.append(w)
                 else:
@@ -269,7 +271,7 @@ class Edwin(Magics):
 # If we can't determine what was said, processMulti
 
     def processMulti(self, uinput, rlist):
-        print("Mulitple Responses scored to be the same based on your input of %s" % uinput)
+        print("Multiple Responses scored to be the same based on your input of %s" % uinput)
         print("I could not guess between the following nodes:")
         for x in rlist:
             print(x)
