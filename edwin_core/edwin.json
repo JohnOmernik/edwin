@@ -1,7 +1,7 @@
 {
     "matrix_version": "0.0.1",
     "replacements": {
-        "%nbuser%": "ENV:JPY_USER"
+        "%nbuser%": "ENV:JUPYTERHUB_USER"
     },
     "tree_root": {
         "edwin": {

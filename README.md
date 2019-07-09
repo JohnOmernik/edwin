@@ -2,7 +2,9 @@
 Enhancing Datascience With IPython Notebokes
 -----
 FAQ: 
+
 Q: But it's call Jupyter now, why is IPython still in the name? A: Because Edwjn doesn't make sense. 
+
 ----
 
 
@@ -43,17 +45,15 @@ move their class from edwin_user to edwin_org and then have it shared with their
 When starting a notebook server, there are ENV variables that are important to the operation of Edwin - Note there are other variables that Edwin may use for "replacements" That's a feature where you can code in the json variables
 so that user specifc things passed in from the ENV are replaced in Edwin's responses. 
 
-| Variable   | Req/Opt | Desc |
-| --------   | ------- | ---- |
-| EDWIN_ORG  | OPT     | This is the path the Edwin Org, while Optional, it's highly recommended |
-| EDWIN_USER | OPT     | The path to Edwin User.  Optional and not required |
-| JPY_USER   | OPT     | This is the user running in the notebook. Edwin uses this to replace "%nbuser% in responses. So if you set this on your notebook server, it helps Edwin customize things|
+| Variable             | Req/Opt | Desc |
+| --------             | ------- | ---- |
+| EDWIN_ORG            | OPT     | This is the path the Edwin Org, while Optional, it's highly recommended |
+| EDWIN_USER           | OPT     | The path to Edwin User.  Optional and not required |
+| JUPYTERHUB_USER      | OPT     | This is the user running in the notebook. Edwin uses this to replace "%nbuser% in responses. So if you set this on your notebook server, it helps Edwin customize things|
 
 
 ## edwin.json
 Format/Desc of edwin.json will be coming shortly. 
-
-
 
 # Ideas Planned
 - Feedback. Have users be able to send feedback on stuff they want to see in Edwin
